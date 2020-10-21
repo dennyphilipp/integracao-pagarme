@@ -18,17 +18,21 @@ namespace Pagarme.Servico
             boletoDto.Valor = 5000;
             boletoDto.Cliente = new ClienteDTO();
             boletoDto.Cliente.Nome = "Nome Completo";
-            boletoDto.Cliente.Pais = "Brasil";
+            boletoDto.Cliente.Pais = "br";
             boletoDto.Cliente.Documentos = new List<DocumentoDTO> { new DocumentoDTO {Numero = "00000000000", Tipo = "cpf" } };
 
             using (var requisicao = new HttpClient())
             {
                 requisicao.BaseAddress = new Uri(Constante.UrlBase);
-                var json = new StringContent(JsonConvert.SerializeObject(boletoDto), Encoding.UTF8, MediaTypeNames.Application.Json);
-                var resultado = requisicao.PostAsync(Constante.NovoBoleto, json).Result;
+                var conteudo = new StringContent(JsonConvert.SerializeObject(boletoDto), Encoding.UTF8, MediaTypeNames.Application.Json);
+                var resultado = requisicao.PostAsync(Constante.NovoBoleto, conteudo).Result;
                 if (resultado.IsSuccessStatusCode)
                 {
                     var t = resultado.Content.ReadAsStringAsync().Result;
+                }
+                else
+                {
+                    var t2 = resultado.Content.ReadAsStringAsync().Result;
                 }
 
             }
