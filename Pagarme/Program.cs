@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Pagarme.Servico;
+using System;
 
 namespace Pagarme
 {
@@ -6,7 +7,9 @@ namespace Pagarme
     {
         static void Main(string[] args)
         {
-
+            var b = new BoletoServico();
+            b.Novo(null, null);
+            Console.ReadLine();
         }
         
     }

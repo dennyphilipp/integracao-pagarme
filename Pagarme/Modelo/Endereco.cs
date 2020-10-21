@@ -1,4 +1,4 @@
-﻿namespace Pagarme
+﻿namespace Pagarme.Modelo
 {
     class Endereco
     {
