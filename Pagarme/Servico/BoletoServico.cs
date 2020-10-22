@@ -11,7 +11,7 @@ namespace Pagarme.Servico
 {
     class BoletoServico
     {
-        internal void Novo(Pessoa pessoa, Endereco endereco)
+        internal BoletoRetornoDTO Novo(Pessoa pessoa, Endereco endereco)
         {
             var boletoDto = new BoletoDTO();
             boletoDto.ChaveApi = Constante.Chave;
@@ -26,15 +26,12 @@ namespace Pagarme.Servico
                 requisicao.BaseAddress = new Uri(Constante.UrlBase);
                 var conteudo = new StringContent(JsonConvert.SerializeObject(boletoDto), Encoding.UTF8, MediaTypeNames.Application.Json);
                 var resultado = requisicao.PostAsync(Constante.NovoBoleto, conteudo).Result;
-                if (resultado.IsSuccessStatusCode)
+                if (!resultado.IsSuccessStatusCode)
                 {
-                    var t = resultado.Content.ReadAsStringAsync().Result;
+                    var erro = JsonConvert.DeserializeObject<RetornoErroDTO>(resultado.Content.ReadAsStringAsync().Result);
+                    throw new Exception(erro.MensagemFormatada());
                 }
-                else
-                {
-                    var t2 = resultado.Content.ReadAsStringAsync().Result;
-                }
-
+                return JsonConvert.DeserializeObject<BoletoRetornoDTO>(resultado.Content.ReadAsStringAsync().Result);
             }
         }
     }
