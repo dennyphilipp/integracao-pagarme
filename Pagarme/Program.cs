@@ -8,7 +8,7 @@ namespace Pagarme
         static void Main(string[] args)
         {
             var b = new BoletoServico();
-            b.Novo(null, null);
+            b.Novo(new Modelo.Pessoa { Documento = "00000000000", Nome = "Nome Completo", Telefone = "47988776655" });
             Console.ReadLine();
         }
         

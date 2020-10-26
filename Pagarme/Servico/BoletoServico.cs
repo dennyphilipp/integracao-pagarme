@@ -11,15 +11,15 @@ namespace Pagarme.Servico
 {
     class BoletoServico
     {
-        internal BoletoRetornoDTO Novo(Pessoa pessoa, Endereco endereco)
+        internal BoletoRetornoDTO Novo(Pessoa pessoa)
         {
             var boletoDto = new BoletoDTO();
             boletoDto.ChaveApi = Constante.Chave;
             boletoDto.Valor = 5000;
             boletoDto.Cliente = new ClienteDTO();
-            boletoDto.Cliente.Nome = "Nome Completo";
+            boletoDto.Cliente.Nome = pessoa.Nome;
             boletoDto.Cliente.Pais = "br";
-            boletoDto.Cliente.Documentos = new List<DocumentoDTO> { new DocumentoDTO {Numero = "00000000000", Tipo = "cpf" } };
+            boletoDto.Cliente.Documentos = new List<DocumentoDTO> { new DocumentoDTO {Numero = pessoa.Documento, Tipo = "cpf" } };
 
             using (var requisicao = new HttpClient())
             {
