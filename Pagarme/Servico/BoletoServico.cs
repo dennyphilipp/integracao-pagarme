@@ -25,7 +25,7 @@ namespace Pagarme.Servico
             {
                 requisicao.BaseAddress = new Uri(Constante.UrlBase);
                 var conteudo = new StringContent(JsonConvert.SerializeObject(boletoDto), Encoding.UTF8, MediaTypeNames.Application.Json);
-                var resultado = requisicao.PostAsync(Constante.NovoBoleto, conteudo).Result;
+                var resultado = requisicao.PostAsync(Constante.Transacao, conteudo).Result;
                 if (!resultado.IsSuccessStatusCode)
                 {
                     var erro = JsonConvert.DeserializeObject<RetornoErroDTO>(resultado.Content.ReadAsStringAsync().Result);
