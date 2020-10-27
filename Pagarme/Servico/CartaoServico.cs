@@ -31,7 +31,6 @@ namespace Pagarme.Servico
             cartaoDto.Cliente.Documentos = new List<DocumentoDTO> { new DocumentoDTO { Numero = pessoa.Documento, Tipo = "cpf" } };
             cartaoDto.Faturamento = new FaturamentoDTO {Nome = "Nome Completo", Endereco = new EnderecoDTO {CEP = "06714360", Cidade = "Cotia", Estado = "sp", Logradouro = "Rua", Numero = "99", Pais = "br" } };
             cartaoDto.Itens = new List<ItemDTO> { new ItemDTO {Fisico= true, Id = "12", Nome = "Folha", Quantidade = 1, Valor = 200 } };
-            
 
 
             using (var requisicao = new HttpClient())

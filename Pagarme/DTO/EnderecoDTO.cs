@@ -25,7 +25,7 @@ namespace Pagarme.DTO
         [JsonProperty("street")]
         public string Logradouro { get; set; }
 
-        //[JsonProperty("neighborhood")]
-        //public string Proximidade { get; set; }
+        [JsonProperty("neighborhood")]
+        public string Proximidade { get; set; }
     }
 }
