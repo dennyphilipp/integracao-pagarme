@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pagarme.DTO
 {
-    class BoletoRetornoDTO
+    class TransacaoRetornoDTO
     {
 
         [JsonProperty("object")]
@@ -78,7 +78,7 @@ namespace Pagarme.DTO
         public string CodigoBarras { get; set; }
 
         [JsonProperty("boleto_expiration_date")]
-        public DateTime DataVencimento { get; set; }
+        public DateTime? DataVencimento { get; set; }
 
         [JsonProperty("referer")]
         public string Referencia { get; set; }

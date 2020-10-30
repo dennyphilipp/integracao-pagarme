@@ -11,7 +11,7 @@ namespace Pagarme.Servico
 {
     class BoletoServico
     {
-        internal BoletoRetornoDTO Novo(Pessoa pessoa)
+        internal TransacaoRetornoDTO Novo(Pessoa pessoa)
         {
             var boletoDto = new BoletoDTO();
             boletoDto.ChaveApi = Constante.Chave;
@@ -36,7 +36,7 @@ namespace Pagarme.Servico
                     var erro = JsonConvert.DeserializeObject<RetornoErroDTO>(resultado.Content.ReadAsStringAsync().Result);
                     throw new Exception(erro.MensagemFormatada());
                 }
-                return JsonConvert.DeserializeObject<BoletoRetornoDTO>(resultado.Content.ReadAsStringAsync().Result);
+                return JsonConvert.DeserializeObject<TransacaoRetornoDTO>(resultado.Content.ReadAsStringAsync().Result);
             }
         }
     }

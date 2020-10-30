@@ -16,6 +16,7 @@ namespace Pagarme.Servico
             var cartaoDto = new CartaoDTO();
             cartaoDto.ChaveApi = Constante.Chave;
             cartaoDto.Parcela = cartao.Parcela;
+            cartaoDto.Captura = true.ToString();
             cartaoDto.CVV = cartao.CVV;
             cartaoDto.DataVencimento = cartao.DataVencimento;
             cartaoDto.Nome = cartao.Nome;

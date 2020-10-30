@@ -5,13 +5,10 @@ using System.Text;
 
 namespace Pagarme.DTO
 {
-    class CartaoDTO
+    class CartaoDTO : TransacaoDTO
     {
         [JsonProperty("amount")]
         public int Valor { get; set; }
-
-        [JsonProperty("api_key")]
-        public string ChaveApi { get; set; }
 
         [JsonProperty("payment_method")]
         public string Tipo => "credit_card";
@@ -39,5 +36,8 @@ namespace Pagarme.DTO
 
         [JsonProperty("items")]
         public IEnumerable<ItemDTO> Itens { get; set; }
+
+        [JsonProperty("capture")]
+        public string Captura { get; set; }
     }
 }
