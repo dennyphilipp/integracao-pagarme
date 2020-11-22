@@ -39,5 +39,8 @@ namespace Pagarme.DTO
 
         [JsonProperty("capture")]
         public string Captura { get; set; }
+
+        [JsonProperty("card_hash")]
+        public string CardHash { get; set; }
     }
 }
